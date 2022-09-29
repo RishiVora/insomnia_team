@@ -1,14 +1,14 @@
-HTML, BODY {
+html, body {
   height: 100%;
   font-size: 16px;
   line-height: 1.5;
   font-family: Trebuchet MS, Helvetica, Arial, sans-serif;
 }
 
-BODY {
+body {
   overflow: hidden;
-  background-color: #222;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.025) 10%, transparent 0), linear-gradient(#222, #000);
+  background-color: #000;
+  /*background-image: linear-gradient(to right, rgba(255, 255, 255, 0.025) 10%, transparent 0), linear-gradient(#222, #000);*/
   background-size: 0.75em 100%, 100% 100%;
   background-attachment: fixed;
   display: flex;
@@ -29,77 +29,98 @@ BODY {
   align-items: center;
 }
 
-IMG {
+.tiles {
   z-index: 1;
   grid-column: span 2;
   max-width: 100%;
   margin-bottom: -52%;
+  cursor: pointer;
   -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
           clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   transform: scale(1);
-  transition: all 0.25s;
+  transition: all 0.22s;
 }
 
-IMG:nth-child(7n+1) {
+.tiles:nth-child(7n+1) {
   grid-column: 2/span 2;
 }
-/*
-IMG:hover {
+
+.tiles:hover {
   z-index: 2;
-  transform: scale(1.5);
+  transform: scale(1.25);
 }
-*/
 
-IMG:nth-child(4), IMG:nth-child(7) {
+.tiles:nth-child(4), .tiles:nth-child(7) {
   opacity: 0%;
+  pointer-events: none;
 }
 
-.animate {
-  transition: all 1s ease;
-  cursor: pointer;
-}
-
-
-/* ↓ just to position things  */
-
-.animate.left {
+.overlay {
+  height: 100%;
+  position: fixed;
+  z-index: 3;
   left: 0;
-  top: 50%;
-  margin-top: -100px;
-}
-
-.animate.right {
-  right: 0;
-  top: 50%;
-}
-
-.animate.top {
   top: 0;
-  left: 50%;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0,0,0,0.9);
+  overflow-x: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.1s ease-in-out;
 }
 
-.animate.bottom {
-  bottom: 0;
-  left: 50%;
-  margin-left: -100px;
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.2s;
 }
 
-.animate.left.move {
-  left: 100%;
-  transform: translate(-100%, 0);
+.overlay a:hover,
+.overlay a:focus {
+  color: #f1f1f1;
 }
 
-.animate.right.move {
-  right: 100%;
-  transform: translate(100%, 0);
+.profile-img,
+.desc {
+  width: 40%;
+  height: fit-content;
 }
 
-.animate.top.move {
-  top: 100%;
-  transform: translate(0, -100%);
+.profile {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  color: #fff;
+  justify-content: space-around;
 }
 
-.animate.bottom.move {
-  bottom: 100%;
-  transform: translate(0, 100%);
+.profile-img {
+  animation: fadeIn 0.5s, slide 0.5s;
+  -webkit-animation: fadeIn 0.5s, slide 0.5s;
+  -moz-animation: fadeIn 0.5s, slide 0.5s;
+  -o-animation: fadeIn 0.5s, slide 0.5s;
+  -ms-animation: fadeIn 0.5s, slide 0.5s;
+  margin-left: 40px;
+}
+
+.desc {
+  height: 60%;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes slide {
+  from {
+    margin-left: 0;
+   }
+
+  to {
+    margin-left: 40px;
+   }
 }
