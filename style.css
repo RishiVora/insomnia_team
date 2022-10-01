@@ -8,7 +8,6 @@ html, body {
 body {
   overflow: hidden;
   background-color: #000;
-  /*background-image: linear-gradient(to right, rgba(255, 255, 255, 0.025) 10%, transparent 0), linear-gradient(#222, #000);*/
   background-size: 0.75em 100%, 100% 100%;
   background-attachment: fixed;
   display: flex;
@@ -20,7 +19,7 @@ body {
   flex-grow: 1;
   margin: auto;
   max-width: 1200px;
-  max-height: 1200px;
+  max-height: 1000px;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -103,11 +102,30 @@ body {
   -moz-animation: fadeIn 0.5s, slide 0.5s;
   -o-animation: fadeIn 0.5s, slide 0.5s;
   -ms-animation: fadeIn 0.5s, slide 0.5s;
-  margin-left: 40px;
 }
 
 .desc {
-  height: 60%;
+  animation: fadeIn 0.5s, rev-slide 0.5s;
+  -webkit-animation: fadeIn 0.5s, rev-slide 0.5s;
+  -moz-animation: fadeIn 0.5s, rev-slide 0.5s;
+  -o-animation: fadeIn 0.5s, rev-slide 0.5s;
+  -ms-animation: fadeIn 0.5s, rev-slide 0.5s;
+}
+
+.desc h1 {
+  font-size: 3em;
+  line-height: 1.1em;
+  margin: 0;
+}
+
+.desc h3 {
+  font-size: 1.25em;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+.desc p {
+  margin: 2em 0;
 }
 
 @keyframes fadeIn {
@@ -117,10 +135,49 @@ body {
 
 @keyframes slide {
   from {
-    margin-left: 0;
+    margin-left: -40px;
    }
 
   to {
-    margin-left: 40px;
+    margin-left: 0px;
    }
+}
+
+@keyframes rev-slide {
+  from {
+    margin-right: -40px;
+  }
+
+  to {
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    transform: rotate(90deg);
+    margin: 0;
+    min-width: 300px;
+    position: auto;
+  }
+  .tiles {
+    transform: rotate(-90deg);
+  }
+  .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin-top: 50px;
+  }
+
+  .profile-img {
+    width: auto;
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .desc {
+    width: 80%;
+  }
 }

@@ -12,24 +12,21 @@ window.onload = function () {
             let profileImg = document.createElement("img");
             profileImg.className = "profile-img";
             profileImg.src = img.src;
-            profileImg.style.cssText = `
-            width: 40%;
-            float: left;`
-            /*
-            profileImg.style.width = "40%";
-            profileImg.style.float = "left";
-            */
             profile.appendChild(profileImg);
 
             let desc = document.createElement("div");
             desc.className = "desc";
-            desc.style.float = "right";
             profile.appendChild(desc);
 
-            let name = document.createElement("h2");
+            let name = document.createElement("h1");
             name.className = "name";
             name.appendChild(document.createTextNode("Lorem Ipsum"));
             desc.appendChild(name);
+
+            let role = document.createElement("h3");
+            role.className = "role";
+            role.appendChild(document.createTextNode("Dolor Sit"));
+            desc.appendChild(role);
             
             let about = document.createElement("p");
             about.className = "about";
