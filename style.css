@@ -159,9 +159,10 @@ body {
     margin: 0;
     min-width: 300px;
     position: auto;
+    scale: 1.5;
   }
   .tiles {
-    transform: rotate(-90deg);
+    rotate: -90deg;
   }
   .profile {
     display: flex;
